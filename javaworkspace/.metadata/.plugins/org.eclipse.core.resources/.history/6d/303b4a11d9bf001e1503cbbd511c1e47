@@ -1,0 +1,13 @@
+package tset01;
+
+public class T_test {
+
+	public static void main(String[] args) {
+		String a = "abcdefg";
+		
+		System.out.println(a.substring(a.length()-7, a.length()-6));
+		System.out.println(a.substring(a.length()-6, a.length()-5));
+		
+	}
+
+}

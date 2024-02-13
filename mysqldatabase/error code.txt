@@ -1,0 +1,43 @@
+Error Code: 1048. Column 'PRIMARY_column' cannot be null
+-> 기본키 속성이 있는 컬럼에 아무것도 넣지 않았다.
+
+Error Code: 1054. Unknown column 'A' in 'where clause'
+-> A를 못찾았다.
+->( 엘리아스를 주의하거나 순서를 생각하면 해결 가능함)
+-> FROM(위치찾기) -> WHERE(조건찾기) -> GROUP BY(조건에 맞춰 묶기) -> HAVING(묶은 상태에서 조건찾기) -> SELECT(필요한게 뭔지 파악하고 보여주기) -> ORDER BY(그 필요한걸 순서 맞춰주기)
+
+Error Code: 1055. Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'practice_sql.jeju2.speed_80m' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+-> 그룹화가 안된다.
+
+Error Code: 1062. Duplicate entry 'A-1-1' for key 'A_table.A-1_column'
+-> A라는 테이블에 A-1라는 컬럼에 A-1-1이라는 값이 중복으로 들어갔다.
+
+Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 4
+-> 오타, 마침표, 쉼표 등등 니 실수
+
+Error Code: 1068. Multiple primary key defined
+-> 여러개의 기본키가 들어갔다
+
+Error Code: 1242. Subquery returns more than 1 row
+-> 비교 할게 1개라도 없다.-
+
+Error Code: 1248. Every derived table must have its own alias
+-> 엘리아스가 지정되지 않았다.
+
+Error Code : 1364 Field 'a' doesn't have a default value
+-> NOT NULL이라는 속성이 걸린 a라는 컬럼에 기본값이 입력이 안되어잇다. (NOT NULL 제약조건이 걸린 a에 값을 지정하지 않음)
+
+Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`practice_sql`.`foreign_table`, CONSTRAINT `foreign_key` FOREIGN KEY (`foreign_column`) REFERENCES `primary_table` (`PRIMARY_column`))
+-> 외래키가 참고한 원본의 값은 삭제할 수 없다.
+
+Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`practice_sql`.`foreign_table`, CONSTRAINT `foreign_key` FOREIGN KEY (`foreign_column`) REFERENCES `primary_table` (`PRIMARY_column`))
+-> 외래키 지정한 곳에 넣은 값이 원본에는 없는 값이라서 생긴 오류
+
+Error Code: 1471. The target table employee_view of the INSERT is not insertable-into
+-> 뷰에는 인썰트가 불가능하다.
+
+Error Code: 3730. Cannot drop table 'primary_table' referenced by a foreign key constraint 'foreign_key' on table 'foreign_table'.
+-> 외래키를 참조하고 있으면 원본 테이블은 삭제하지 못한다.
+
+Error Code: 3819. Check constraint 'check_table_chk_1' is violated.
+-> check 설정에 맞지 않는 값을 넣었다.

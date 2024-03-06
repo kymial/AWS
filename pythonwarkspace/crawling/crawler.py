@@ -33,7 +33,7 @@ response = requests.get(URL)
 if response.status_code == 200 :
     html = response.text
     soup = BeautifulSoup(html, 'html.parser')
-    a_list = soup.find_all('a')
+    a_list = soup.find_all('a') 
     print(a_list)
 else :
     print(response.status_code)
@@ -94,13 +94,16 @@ for image_element in image_elements :
     image_list.append(image_src)
 time.sleep(1)
 
+# 파이썬으로 폴더 생성
 import os
 
 FOLDER_PATH = r'./images/'
 
 if not os.path.isdir(FOLDER_PATH) :
     os.mkdir(FOLDER_PATH)
+# 파이썬으로 폴더 생성//
 
+# 파이썬으로 이미지 url 파일 다운로드
 from urllib.request import urlretrieve
 
 number = 1
@@ -109,3 +112,4 @@ for image_src in image_list :
     urlretrieve(image_src, FOLDER_PATH + f'{number}.png')
     number +=1
 time.sleep(0.5)
+# 파이썬으로 이미지 url 파일 다운로드//

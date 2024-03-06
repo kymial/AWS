@@ -1,0 +1,40 @@
+git
+
+GIT GUI
+github desktop
+
+
+VSC에 확장에서 git에 도움되는게
+
+Git Graph
+Git History
+Git Pull requests
+GitHub Repositories
+GitLens
+
+.gitignore
+- 폴더 형상관리 무시
+
+폴더이름/
+폴더이름
+
+ex) app/bulid -> app안에 있는 bulid만 무시하겠다.
+
+
+- 파일 형상관리 무시
+
+파일명(확장자 같이 포함)
+
+ex) AppTest.java
+ex) test/java/aaa/AppTest.java -> test에 java에 aaa안에 있는 AppTest.java만 무시하겠다.
+
+- 특정 확장자 모두 무시
+
+*.(확장자)
+
+ex) *.properties
+
+- * 활용한 무시
+
+ex) test/java/*/AppTest.java -> test에 java안에 있는 모든폴더안에 있는 AppTest.java만 무시하겠다.
+ex) test/java/**/AppTest.java -> test에 java안에 있는 모든폴더안에 있는 또 그 안에 있는 AppTest.java까지 무시하겠다.

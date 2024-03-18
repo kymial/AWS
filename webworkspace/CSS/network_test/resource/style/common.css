@@ -1,0 +1,128 @@
+@font-face {
+    font-family: 'KakaoRegular';
+    src: url('../font/KakaoRegular.ttf');
+}
+
+@font-face {
+    font-family: 'KakaoBold';
+    src: url('../font/KakaoBold.ttf');
+}
+
+*{
+    font-family: 'KakaoRegular', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+#wrapper{
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    width: 1712px;
+}
+
+.contents-box{
+    display: grid;
+    grid-template: 
+        "news news" 198px
+        /1fr 1fr;
+    gap : 16px;
+}
+
+.content-card {
+    width: 848px;
+    height: 198px;
+    background-color: #f3f3f3;
+    border-radius: 24px;
+    /*display: flex;
+    justify-content: space-between;
+    align-items: center;*/
+    display: grid;
+    grid-template: 
+        "a a"
+        "b b"
+        /1fr 1fr;
+    padding: 36px 40px;
+}
+
+.content-news-box {
+    display: flex;
+    gap: 12px;
+}
+
+.icon-news {
+    background-image: url(https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/6562f7bc017800001.png);
+    width: 38px;
+    height: 38px;
+    display: inline-block;
+    content: '';
+    background-size: 100%;
+    margin: 0, 12px, 0, 0 ;
+}
+
+.b-news-box {
+    width: 74px;
+    height: 33px;
+    background-color: white;
+    font-size: 14px;
+    border-radius: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.n-data {
+    width: 77px;
+    height: 38px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-more {
+    background-image: url(https://cdn-icons-png.flaticon.com/512/64/64576.png);
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    content: '';
+    background-size: 100%;
+}
+
+.content-title {
+    font-size: 26px;
+}
+
+.f-contens-box{
+    display: flex;
+    gap:16px;
+}
+
+.news-box {
+    width : 560px;
+    height : 110px;
+    background-color: #f3f3f3;
+    font-size: 26px;
+    letter-spacing: -0.4px;
+    border-radius: 38px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center ; 
+}
+
+.round-black{
+    width: 24px;
+    height: 24px;
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    display:inline-block;
+    border-radius: 12px;
+    text-align: center;
+    line-height: 24px;
+    font-size: 16px;
+}
+
+.baro {
+    font-size: 16px;
+}

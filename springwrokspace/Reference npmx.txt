@@ -1,0 +1,4 @@
+npm -v
+npx -v 로 버전 확인
+npm install -g npm --latest : npm, npx 업데이트
+

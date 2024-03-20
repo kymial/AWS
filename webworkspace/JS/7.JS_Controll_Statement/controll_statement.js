@@ -40,7 +40,7 @@ switch (weekNumber){
         break;
     case 1 :
         weekString += '월요일';
-        brea;k
+        break;
     case 2 :
         weekString += '화요일';
         break;

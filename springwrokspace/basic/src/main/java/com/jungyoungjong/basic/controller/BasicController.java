@@ -40,8 +40,8 @@ public class BasicController {
 
     @GetMapping("/apple")
     public String getApple() {
-0        return "Get Mapping으로 만든 매서드";
-.                                                                                                                                                                                                                                                                                                                                                                                     }
+                return "Get Mapping으로 만든 매서드";
+    }
     
     // HTTP POST Method : 클라이언트가 서버에 데이터를 작성하기 원할때 사용하는 메서드
     // @PostMapping() : RequestMapping 기능을 Post Method에 한정시킨 것 (가독성 + 안전성)

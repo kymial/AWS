@@ -2,10 +2,15 @@ package com.jungyoungjong.basic.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.jungyoungjong.basic.dto.SampleDto;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -36,18 +41,21 @@ public class RequestDataController {
     // @PathVariable() :
     // - 모든 HTTP 메서드에서 URL의 특정 패턴에 따라서 데이터를 추출하는 방식
 
-    // HTTP DELETE localhost:4000/request-data/path-variable
-    @DeleteMapping("/path-variable/{age}")
+    // HTTP DELETE localhost:4000/request-data/path-variable/10
+    @DeleteMapping({
+        "/path-variable/{age}/{name}",
+        "/path-variable/{age}"
+    })
 
 
-    // http://localhost:4000/request-data/path-variable/{age}
+    // http://localhost:4000/request-data/path-variable/{age}/{name}
     public String deletePathVariable(
-        @PathVariable("age") Integer age    // 필수 형태로 입력하는게 좋다.
-
+        @PathVariable("age") Integer age,    // 필수 형태로 입력하는게 좋다.
+        @PathVariable(name="name", required = false) String name
     ) 
 
     {
-        return "사용자 나이 : " + age;
+        return "사용자 나이 : " + age + " / 사용자 이름 : " + name;
     }
 
     
@@ -72,7 +80,7 @@ public String patchUpdate(
 
     // ! *****주의 
     // URL 패턴으로 데이터를 받아오는 방식을 썻을 때 겹치는 패턴이 존재하는지 잘 확인해야 함
-    
+
 /*
 
     @GetMapping("/{value}/get")
@@ -96,5 +104,22 @@ public String patchUpdate(
 */
     
 
+    // @RequestBody() :
+    // - POST, PATCH, PUT 처럼 RequestBody로 데이터를 전송하는 메서드에서 데이터를 가져오기 위해 사용
+
+
+    // HTTP PATCH localhost:4000/request-data/post
+    @PostMapping("/post")
+    
+    
+    // http://localhost:4000/request-data/post
+    public String post(
+    // @RequestBody String text
+    @RequestBody SampleDto dto
+    )
+
+    {
+        return "전송한 데이터 : " + dto.toString();
+    }
 
 }

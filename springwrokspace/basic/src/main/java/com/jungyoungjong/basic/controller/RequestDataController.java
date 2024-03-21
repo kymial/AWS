@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jungyoungjong.basic.dto.SampleDto;
 
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -115,7 +117,8 @@ public String patchUpdate(
     // http://localhost:4000/request-data/post
     public String post(
     // @RequestBody String text
-    @RequestBody SampleDto dto
+    // @valid : 해당 payload에 대해서 유효성 검사를 실시하도록 함
+    @RequestBody @Valid SampleDto dto
     )
 
     {

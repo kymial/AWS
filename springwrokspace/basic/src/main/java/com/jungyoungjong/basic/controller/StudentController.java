@@ -3,6 +3,7 @@ package com.jungyoungjong.basic.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jungyoungjong.basic.dto.request.student.PatchStudentRequestDto;
 import com.jungyoungjong.basic.dto.request.student.PostStudentRequestDto;
 import com.jungyoungjong.basic.service.StudentService;
 
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
 @RestController
 @RequestMapping("/student")
 @RequiredArgsConstructor
@@ -27,26 +27,25 @@ public class StudentController {
     // CREATE
     @PostMapping("/")
     public ResponseEntity<String> postStudent(
-        @RequestBody @Valid PostStudentRequestDto requestBody
-    ) {
+            @RequestBody @Valid PostStudentRequestDto requestBody) {
         ResponseEntity<String> response = studentService.postStudent(requestBody);
         return response;
     }
 
     // UPDATE
     @PatchMapping("/")
-    public ResponseEntity<?> patchStudent() {
-        return null;
+    public ResponseEntity<String> patchStudent(
+            @RequestBody @Valid PatchStudentRequestDto requestBody) {
+        ResponseEntity<String> response = studentService.patchStudent(requestBody);
+        return response;
     }
 
     // DELETE
     @DeleteMapping("/{studentNumber}")
-    public ResponseEntity<?> deleteStudent(
-        @PathVariable("studentNumber") Integer studentNumber
-    ){
-        return null;
+    public ResponseEntity<String> deleteStudent(
+            @PathVariable("studentNumber") Integer studentNumber) {
+        ResponseEntity<String> response = studentService.deleteStudent(studentNumber);
+        return response;
     }
 
-    }
-    
-
+}

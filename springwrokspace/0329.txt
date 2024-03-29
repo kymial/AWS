@@ -1,0 +1,5 @@
+CRUD
+CREATE : 1~2
+READ : 무수히 많음
+UPDATE : 1 ~ 컬럼 개수
+DELETE : 1~2

@@ -7,9 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.board.dto.board.GetLatestListResponseDto;
-import com.example.board.dto.board.item.BoardListItem;
 import com.example.board.dto.response.ResponseDto;
+import com.example.board.dto.response.board.GetLatestListResponseDto;
+import com.example.board.dto.response.board.item.BoardListItem;
 import com.example.board.repository.BoardRepository;
 import com.example.board.service.BoardService;
 

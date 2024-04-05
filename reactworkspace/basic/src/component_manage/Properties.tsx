@@ -5,6 +5,9 @@ import React from 'react'
 // - 부모 컴포넌트에서는 HTML과 동일한 방식 (속성명=데이터)로 전달
 // - 자식 컴포넌트에서는 JS의 매개변수 방식으로 받음
 // - 전달할 수 있는 데이터는 JS로 표현할 수 있는 모든 형태
+// - 컴포넌트가 리젠더링되는 기준
+// - Properties는 부모 요소에서 자식 요소로 데이터 전송 O / 자식 요소에서 부모 요소로 데이터 전송  X
+
 interface Props {
     title :  String;
     content : String;

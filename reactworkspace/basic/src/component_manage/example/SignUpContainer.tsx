@@ -40,7 +40,7 @@ const InputBoxes : InputBoxProps[] = [
 ];
 
 
-export default function SignInContainer() {
+export default function SignUpContainer() {
 
 const InputBoxesComponents = InputBoxes.map((item, index) => <InputBox key={index} {...item} />)
 

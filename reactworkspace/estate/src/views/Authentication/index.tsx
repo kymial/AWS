@@ -3,8 +3,12 @@ import './style.css'
 
 type AuthPage = 'sign-in' | 'sign-up';
 
+interface Props {
+    onLinkClickHandler : () => void
+}
 
-function SignIn() {
+
+function SignIn({ onLinkClickHandler } : Props) {
 
     const onSignInButtonClickHandler = () => {
 
@@ -14,8 +18,8 @@ function SignIn() {
         <div className="authentication-contents">
             <div className="authentication-input-container"></div>
             <div className="authentication-button-container">
-            <div className="primary-button full-width" onClick={onSignInButtonClickHandler}>로그인</div>
-            <div className="text-link">회원가입</div>
+            <div className="primary-button full-width" onClick={ onSignInButtonClickHandler }>로그인</div>
+            <div className="text-link" onClick={ onLinkClickHandler }>회원가입</div>
             </div>
             <div className="short-divider"></div>
             <div className="authentication-sns-container"></div>
@@ -23,17 +27,40 @@ function SignIn() {
     );
 }
 
-function SignUp() {
+function SignUp( { onLinkClickHandler } : Props) {
+
+    const onSIgnUpButtonClickHandler = () => {
+
+    }
+
     return(
-        <>회원가입</>
+
+        <div className="authentication-contents">
+            <div className="authentication-sns-container"></div>
+            <div className="short-divider"></div>
+            <div className="authentication-input-container"></div>
+            <div className="authentication-button-container">
+            <div className="primary-button full-width" onClick={ onSIgnUpButtonClickHandler }>회원가입</div>
+            <div className="text-link" onClick={ onLinkClickHandler }>로그인</div>
+            </div>
+        </div>
+
     );
+
 }
 
 export default function Authentication() {
 
     const [page, setPage] = useState<AuthPage>('sign-in');
+
+    const onLinkClickHandler = () => {
+        if (page === 'sign-in') setPage('sign-up');
+        else setPage('sign-in');
+    }
     
-    const AuthticationContents = page === 'sign-in' ? <SignIn />  : <SignUp />
+    const AuthticationContents = page === 'sign-in' ? 
+    <SignIn onLinkClickHandler={ onLinkClickHandler } />  : 
+    <SignUp onLinkClickHandler={ onLinkClickHandler } /> ;
 
     return (
         <div id="authentication-wrapper">

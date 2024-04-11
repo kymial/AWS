@@ -72,3 +72,11 @@
     display: flex;
     gap: 24px;
 }
+
+.kakao-button {
+    background-image: url('../../assets/image/kakao-button.png');
+}
+
+.naver-button {
+    background-image: url('../../assets/image/naver-button.png');
+}

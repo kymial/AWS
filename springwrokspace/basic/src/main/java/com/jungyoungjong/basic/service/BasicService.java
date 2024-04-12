@@ -8,6 +8,8 @@ public interface BasicService {
     // public abstract 제어자는 생략해도 됨
     String getHello();
     String getApple();
+
     String getJwt(String principle);
+    String jwtValidate(String jwt);
 
 }  

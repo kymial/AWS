@@ -4,7 +4,8 @@ import React, { useRef, useState } from 'react'
 
 export default function HookComponent2() {
     
-    const [image, setImage] = useState<string>('');
+    const [image, setImage] = useState
+    <string>('');
 
     // useRef : 
     //  - DOM 객체를 직접 다루고자 할 때 혹은 렌더링 없이 값을 변경 저장 하고자 할 때 사용

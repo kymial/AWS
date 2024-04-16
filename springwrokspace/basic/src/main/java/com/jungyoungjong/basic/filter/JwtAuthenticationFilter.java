@@ -62,7 +62,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     // 접근 주체에 대한 권한 지점
                     List<GrantedAuthority> roles = AuthorityUtils.NO_AUTHORITIES;
                     if (subject.equals("student")){
-                        roles = new ArrayList<>();
+                        roles = new ArrayList<>(); 
                         roles.add(new SimpleGrantedAuthority("ROLE_STUDENT"));
                     }
                     

@@ -1,0 +1,11 @@
+npx create-react-app libraries --template typescript
+
+zustand 
+
+npm i zustand :zustand 설치
+
+
+
+
+
+/ react-router

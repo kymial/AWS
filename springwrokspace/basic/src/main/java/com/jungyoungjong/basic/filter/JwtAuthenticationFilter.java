@@ -77,7 +77,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                         = new UsernamePasswordAuthenticationToken(subject, null, roles);
 
                     // 3-2. 인증 요청에 대한 세부정보를 등록 / 웹 인증 정보를 해당 리퀘스트에 등록
-                    authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    authenticationToken.setDetails(new  WebAuthenticationDetailsSource().buildDetails(request));
 
                     // 3-3. 빈 security context 생성
                     SecurityContext securityContext = SecurityContextHolder.createEmptyContext();

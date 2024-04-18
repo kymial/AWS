@@ -1,0 +1,6 @@
+axios : HTTP 통신 처리 수월하게 하는 라이브러리
+npm i axios
+
+
+react-cookie : React에서 쿠키관리를 수월하게 하는 라이브러리
+npm i react-cookie

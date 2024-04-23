@@ -2,5 +2,7 @@
     "cSpell.words": [
         "KAKAO",
         "NAVER"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.compile.nullAnalysis.mode": "automatic"
 }

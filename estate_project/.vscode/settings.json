@@ -1,7 +1,9 @@
 {
     "cSpell.words": [
+        "Jwts",
         "KAKAO",
-        "NAVER"
+        "NAVER",
+        "Servlet"
     ],
     "java.configuration.updateBuildConfiguration": "interactive",
     "java.compile.nullAnalysis.mode": "automatic"

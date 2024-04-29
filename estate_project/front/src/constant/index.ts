@@ -13,7 +13,7 @@ export const QNA_UPDATE_PATH = 'update/:receptionNumber';
 
 // description : Navigation 절대 URL PATH
 
-export const AUTH_ABSOLUTE_PATH = 'AUTH_PATH';
+export const AUTH_ABSOLUTE_PATH = AUTH_PATH;
 export const LOCAL_ABSOLUTE_PATH = `${SERVICE_PATH}/${LOCAL_PATH}`;
 export const RATIO_ABSOLUTE_PATH = `${SERVICE_PATH}/${RATIO_PATH}`;
 export const QNA_LIST_ABSOLUTE_PATH = `${SERVICE_PATH}/${QNA_PATH}`;

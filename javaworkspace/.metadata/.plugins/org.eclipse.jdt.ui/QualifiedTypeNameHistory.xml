@@ -22,8 +22,6 @@
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.lang.Boolean"/>
     <fullyQualifiedTypeName name="tset01.T_Test04"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.mysql.cj.protocol.x.SyncFlushDeflaterOutputStream"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
@@ -50,4 +48,12 @@
     <fullyQualifiedTypeName name="com.jung.realEstate.repository.EmailAuthenticationRepository"/>
     <fullyQualifiedTypeName name="com.jung.realEstate.repository.implement.EmailAuthenticationRepositoryImplement"/>
     <fullyQualifiedTypeName name="com.jung.realEstate.dto.response.SendCodeResponeseDto"/>
+    <fullyQualifiedTypeName name="java.awt.image.AbstractMultiResolutionImage"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+    <fullyQualifiedTypeName name="codingtest.week01.RemoteController"/>
+    <fullyQualifiedTypeName name="codingtest.week01.RemoteControllerExample"/>
+    <fullyQualifiedTypeName name="codingtest.week01.Radio"/>
+    <fullyQualifiedTypeName name="codingtest.week01.Television"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

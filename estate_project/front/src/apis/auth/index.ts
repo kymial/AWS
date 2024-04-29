@@ -3,13 +3,14 @@ import { EmailAuthCheckRequestDto, EmailAuthRequestDto, IdCheckRequestDto, SignI
 import { EMAIL_AUTH_CHECK_REQUEST_URL, EMAIL_AUTH_REQUEST_URL, ID_CHECK_REQUEST_URL, SIGN_IN_REQUEST_URL, SIGN_UP_REQUEST_URL } from "src/constant";
 import ResponseDto from "../response.dto";
 import { requestErrorHandler, requestHandler } from "..";
+import { SignInResponseDto } from "./dto/response";
 
 
 // function: 로그인 API 함수
 export const SignInRequest = async (requestBody: SignInRequestDto) => {
 
     const result = await axios.post(SIGN_IN_REQUEST_URL, requestBody)
-    .then(requestHandler<SignInRequestDto>)
+    .then(requestHandler<SignInResponseDto>)
     .catch(requestErrorHandler)
 
     return result;

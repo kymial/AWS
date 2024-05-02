@@ -4,7 +4,7 @@ interface UserStore {
     loginUserId: string,
     setLoginUserId: (loginUserId: string) => void,
     loginUserRole: string,
-    setLoginUserRole: (loginUserRole: string) => void,
+    setLoginUserRole: (loginUserRole: string) => void
 }
 
 const useUserStore = create<UserStore>(set => ({

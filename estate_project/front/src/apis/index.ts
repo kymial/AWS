@@ -13,7 +13,7 @@ export const requestHandler = <T>(response : AxiosResponse<T, any>) => {
 export const requestErrorHandler = (error : any) => {
     const responseBody = error.response?.data;
     if (!responseBody) return null;
-    return responseBody as ResponseDto;
+    return responseBody as ResponseDto; 
 };
 
 // function: Authorization Bearer 헤더 

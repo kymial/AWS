@@ -21,14 +21,13 @@ public class BoardListItem {
 
     private BoardListItem(BoardEntity boardEntity) throws Exception {
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
         Date datetime = simpleDateFormat.parse(boardEntity.getWriteDatetime());
-        simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        simpleDateFormat = new SimpleDateFormat("yy-mm-dd");
         String writeDatetime = simpleDateFormat.format(datetime);
 
         String writerId = boardEntity.getWriterId();
         writerId = writerId.substring(0, 1) + "*".repeat(writerId.length() - 1);
-
 
         this.receptionNumber = boardEntity.getReceptionNumber();
         this.status = boardEntity.getStatus();

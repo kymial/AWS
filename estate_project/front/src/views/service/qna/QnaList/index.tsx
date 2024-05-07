@@ -32,8 +32,8 @@ function ListItem({ receptionNumber,
                 <div className='qna-list-table-reception-number'>{receptionNumber}</div>
                     <div className='qna-list-table-status'>
                     {status ? 
-                        <div className='primary-badge'>완료</div> :
-                        <div className='disable-badge'>접수</div>
+                        <div className='disable-badge'>완료</div> :
+                        <div className='primary-badge'>접수</div>
                     }
                     </div>
                     <div className='qna-list-table-title' style={{ textAlign: 'left' }}>{title}</div>
@@ -64,24 +64,25 @@ export default function QnaList() {
     const [currentSection, setCurrentSection] = useState<number>(1);
     const [isToggleOn, setToggleOn] =useState<boolean>(false);
 
-    const [searchWord, setSearchWord] =useState<string>();
+    const [searchWord, setSearchWord] =useState<string>('');
 
     //                    function                    //
 
     const navigator = useNavigate();
 
-    const changePage = (boardList: BoardListItem[], totalLength: number) => {
+    const changePage = (boardList: BoardListItem[], totalLenght: number) => {
 
         const startIndex = (currentPage - 1) * COUNT_PER_PAGE;
-        let endIndex = currentPage * COUNT_PER_PAGE ;
-        if (endIndex > totalLength -1) endIndex = totalLength;
+        let endIndex = currentPage * COUNT_PER_PAGE;
+        if (endIndex > totalLenght - 1) endIndex = totalLenght;
         const viewList = boardList.slice(startIndex, endIndex);
         setViewList(viewList);
     };
 
-    const changeSection = (totalPage: number ) => {
 
-        const startPage = (currentSection * COUNT_PER_SECTION) - (COUNT_PER_SECTION -1);
+    const changeSection = (totalPage: number) => {
+
+        const startPage = (currentSection * COUNT_PER_SECTION) - (COUNT_PER_SECTION - 1);
         let endPage = currentSection * COUNT_PER_SECTION;
         if (endPage > totalPage) endPage = totalPage;
         const pageList: number[] = [];
@@ -194,12 +195,12 @@ export default function QnaList() {
     }, []);
 
     useEffect(() => {
-        if (boardList.length) return;
+        if (!boardList.length) return;
         changePage(boardList, totalLength);
     }, [currentPage]);
 
     useEffect(() => {
-        if (boardList.length) return;
+        if (!boardList.length) return;
         changeSection(totalPage);
     }, [currentSection]);
     
@@ -247,7 +248,7 @@ export default function QnaList() {
                 </div>
                 <div className='qna-list-search-box'>
                     <div className='qna-list-search-input-box'>
-                        <input className='qna-list-search-input' placeholder='검색어를 입력하세요.' value={searchWord} onChange={onSearchWordChangeHandler}/>
+                        <input className='qna-list-search-input' placeholder='검색어를 입력하세요.' value={searchWord} onChange={onSearchWordChangeHandler} />
                     </div>
                     <div className={searchButtonClass} onClick={onSearchButtonClickHandler}>검색</div>
                 </div>

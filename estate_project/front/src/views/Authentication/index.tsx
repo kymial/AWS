@@ -96,7 +96,7 @@ function SignIn({ onLinkClickHandler } : Props) {
 
         const { accessToken, expires } = result as SignInResponseDto;
 
-        const expiration = new Date(Date.now() + (expires + 1000));
+        const expiration = new Date(Date.now() + (expires * 1000));
         setCookie('accessToken', accessToken, {path: '/', expires: expiration });
 
         navigator(LOCAL_ABSOLUTE_PATH);

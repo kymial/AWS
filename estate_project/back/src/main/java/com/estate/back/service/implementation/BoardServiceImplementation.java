@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.estate.back.dto.request.board.PostBoardRequestDto;
 import com.estate.back.dto.request.board.PostCommentRequestDto;
+import com.estate.back.dto.request.board.PutBoardRequestDto;
 import com.estate.back.dto.response.ResponseDto;
 import com.estate.back.dto.response.board.GetBoardListResponseDto;
 import com.estate.back.dto.response.board.GetBoardResponseDto;
@@ -134,6 +135,59 @@ public class BoardServiceImplementation implements BoardService {
             boardEntity.setComment(comment);
 
             boardRepository.save(boardEntity);
+            
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+
+        return ResponseDto.success();
+
+    }
+
+    @Override
+    public ResponseEntity<ResponseDto> deleteBoard(int receptionNumber, String UserId) {
+        
+        try {
+
+            BoardEntity boardEntity = boardRepository.findByReceptionNumber(receptionNumber);
+            if (boardEntity == null) ResponseDto.noExistBoard();
+            
+            String writerId = boardEntity.getWriterId();
+            boolean isWriter = UserId.equals(writerId);
+            if (!isWriter) return ResponseDto.authorizationFailed();
+
+            boardRepository.delete(boardEntity);
+
+            
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+
+        return ResponseDto.success();
+        
+    }
+
+    @Override
+    public ResponseEntity<ResponseDto> putBoard(PutBoardRequestDto dto, int receptionNumber, String userId) {
+        
+        try {
+
+            BoardEntity boardEntity = boardRepository.findByReceptionNumber(receptionNumber);
+            if (boardEntity == null) ResponseDto.noExistBoard();
+
+            String writerId = boardEntity.getWriterId();
+            boolean isWriter = userId.equals(writerId);
+            if (!isWriter) return ResponseDto.authorizationFailed();
+
+            boolean status = boardEntity.getStatus();
+            if (status) return ResponseDto.writtenComment();
+
+            boardEntity.update(dto);
+
+            boardRepository.save(boardEntity);
+            
             
         } catch (Exception exception) {
             exception.printStackTrace();

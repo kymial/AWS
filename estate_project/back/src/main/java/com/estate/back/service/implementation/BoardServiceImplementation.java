@@ -175,7 +175,7 @@ public class BoardServiceImplementation implements BoardService {
         try {
 
             BoardEntity boardEntity = boardRepository.findByReceptionNumber(receptionNumber);
-            if (boardEntity == null) ResponseDto.noExistBoard();
+            if (boardEntity == null) return ResponseDto.noExistBoard();
 
             String writerId = boardEntity.getWriterId();
             boolean isWriter = userId.equals(writerId);

@@ -5,6 +5,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.estate.back.dto.response.ResponseDto;
 
@@ -14,7 +15,7 @@ import com.estate.back.dto.response.ResponseDto;
 
 @RestControllerAdvice
 
-public class ValidationExceptionHandler {
+public class CustomExceptionHandler {
     
     // RequestBody의 데이터 유효성 검사 중 발생하는 예외 핸들링
     
@@ -28,6 +29,14 @@ public class ValidationExceptionHandler {
     ){
         exception.printStackTrace();
         return ResponseDto.validationFailed();
+    }
+
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ResponseEntity<ResponseDto> noHandlerFoundExceptionHandler(
+        Exception exception
+    ){
+        exception.printStackTrace();
+        return ResponseDto.notFound();
     }
 
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './style.css'
 import SelectBox from 'src/components/Selectbox';
-import { CategoryScale, Chart as ChartJs, LineElement, LinearScale, PointElement, Tooltip } from 'chart.js';
+import { CategoryScale, Chart as ChartJs, LineElement, LinearScale, PointElement, Ticks, Tooltip } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
 ChartJs.register(
@@ -17,7 +17,42 @@ ChartJs.register(
 export default function Local() {
 
     const options  = {
-        responsive: true
+        responsive: false,
+        scales: {
+            y: {
+                min: 150,
+                max: 300,
+                ticks: {
+                    stepSize: 30
+                }
+            }
+        }
+    };
+
+    const leaseOptions  = {
+        responsive: false,
+        scales: {
+            y: {
+                min: 150,
+                max: 300,
+                ticks: {
+                    stepSize: 30
+                }
+            }
+        }
+    };
+
+    const monthRentOptions  = {
+        responsive: false,
+        scales: {
+            y: {
+                min: 150,
+                max: 300,
+                ticks: {
+                    stepSize: 30
+                }
+            }
+        }
     };
 
     //                    state                    //
@@ -87,7 +122,7 @@ export default function Local() {
                     <div className='local-card-unit'>(단위: 백만원)</div>
                 </div>
                 <div className='local-card-chart-box'>
-                    <Line options={options} data={saleData} />
+                    <Line width={'1086px'} height={'238px'} options={options} data={saleData} />
                     
                 </div>
             </div>
@@ -97,7 +132,7 @@ export default function Local() {
                     <div className='local-card-unit'>(단위: 백만원)</div>
                 </div>
                 <div className='local-card-chart-box'>
-                    <Line options={options} data={leaseData} />
+                    <Line width={'1086px'} height={'238px'} options={leaseOptions} data={leaseData} />
                     
                 </div>
             </div><div className='local-card'>
@@ -106,7 +141,7 @@ export default function Local() {
                     <div className='local-card-unit'>(단위: 백만원)</div>
                 </div>
                 <div className='local-card-chart-box'>
-                    <Line options={options} data={monthRentData} />
+                    <Line width={'1086px'} height={'238px'} options={monthRentOptions} data={monthRentData} />
 
                 </div>
             </div>

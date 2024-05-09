@@ -1,6 +1,7 @@
 package com.estate.back.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 
 public class EstateEntity {
-    
+    @Id
     private Integer sequence;
     private String local;
     private String yearMonth;

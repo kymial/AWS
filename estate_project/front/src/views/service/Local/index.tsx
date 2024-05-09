@@ -16,7 +16,7 @@ ChartJs.register(
 
 export default function Local() {
 
-    const options  = {
+    const saleOptions  = {
         responsive: false,
         scales: {
             y: {
@@ -122,7 +122,7 @@ export default function Local() {
                     <div className='local-card-unit'>(단위: 백만원)</div>
                 </div>
                 <div className='local-card-chart-box'>
-                    <Line width={'1086px'} height={'238px'} options={options} data={saleData} />
+                    <Line width={'1086px'} height={'238px'} options={saleOptions} data={saleData} />
                     
                 </div>
             </div>

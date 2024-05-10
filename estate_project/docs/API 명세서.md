@@ -818,7 +818,7 @@ Content-Type: application/json;charset=UTF-8
 인가 실패, 데이터베이스 에러가 발생 할 수 있습니다.
 
 - method : **GET**
-- URL : **/list/{searchWord}**
+- URL : **/list/search**
 
 ##### Request
 
@@ -837,7 +837,7 @@ Content-Type: application/json;charset=UTF-8
 ###### Example
 
 ```bash
-curl -v -X GET "http://localhost:4000/api/v1/board/list/${searchWord}" \
+curl -v -X GET "http://localhost:4000/api/v1/board/list/search?word${searchWord}" \
  -H "Authorization: Bearer {JWT}"
 ```
 
@@ -1550,6 +1550,162 @@ Content-Type: application/json;charset=UTF-8
   "sale" : [4525, 4855, 4755, ..., 4621],
   "lease" : [4525, 4855, 4755, ..., 4621],
   "monthRent" : [4525, 4855, 4755, ..., 4621]
+}
+```
+
+**응답 : 실패 (데이터 유효성 검사 실패)**
+```bash
+HTTP/1.1 400 Bad Request
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "VF",
+  "message": "Validation Failed."
+}
+```
+
+**응답 : 실패 (인가 실패)**
+```bash
+HTTP/1.1 403 Forbidden
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "AF",
+  "message": "Authorization Failed."
+}
+```
+
+**응답 : 실패 (인가 실패)**
+```bash
+HTTP/1.1 403 Forbidden
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "AF",
+  "message": "Authorization Failed."
+}
+```
+
+**응답 : 실패 (존재하지 않는 게시물)**
+```bash
+HTTP/1.1 400 Bad Request
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "NB",
+  "message": "No Exist Board."
+}
+```
+
+**응답 : 실패 (답변 완료된 게시물)**
+```bash
+HTTP/1.1 400 Bad Request
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "WC",
+  "message": "Written Comment."
+}
+```
+
+**응답 : 실패 (데이터베이스 오류)**
+```bash
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "DBE",
+  "message": "Database Error."
+}
+```
+
+
+***
+
+
+#### - 비율 데이터 불러오기
+  
+##### 설명
+
+클라이언트로부터 Request Header의 Authorization 필드로 Bearer 토큰을 포함하여 지역을 입력받고 불러오기에 성공하면 성공처리를 합니다.
+만약 불러오기에 실패하면 실패처리를 합니다. ( 날짜 데이터를 제외한 모든 단위는 백분율 단위 )
+인가 실패, 데이터베이스 에러, 데이터 유효성 검사 실패가 발생할 수 있습니다.
+
+- method : **GET**
+- URL : **/ratio/{local}**
+
+##### Request
+
+###### Header
+
+| name | description | required |
+|---|:---:|:---:|
+| Authorization | 인증에 사용될 Bearer 토큰 | O |
+
+###### Path Variable
+
+| name | type | description | required |
+|---|:---:|:---:|:---:|
+| local | String | 조회할 지역 | O |
+
+###### Example
+
+```bash
+curl -v -X POST "http://localhost:4000/api/v1/estate/local/{local}" \
+ -H "Authorization: Bearer {JWT}"
+```
+
+##### Response
+
+###### Header
+
+| name | description | required |
+|---|:---:|:---:|
+| Content-Type | 반환하는 Response Body의 Content Type (application/json) | O |
+
+###### Response Body
+
+| name | type | description | required |
+|---|:---:|:---:|:---:|
+| code | String | 결과 코드 | O |
+| message | String | 결과 메세지 | O |
+| yearMonth | String[] | 연월 리스트 | O |
+
+| return40 | Int[] | 40m2 이하 수익율 리스트 | O |
+| return4060 | Int[] | 40m2 초과 60m2 이하 수익율 리스트 | O |
+| return6085 | Int[] | 60m2 초과 85m2 이하 수익율 리스트 | O |
+| return85 | Int[] | 85m2 초과 수익율 리스트 | O |
+
+| leaseRatio40 | Int[] | 40m2 이하 매매가 대비 전세가 비율 리스트 | O |
+| leaseRatio4060 | Int[] | 40m2 초과 60m2 이하 매매가 대비 전세가 비율 리스트 | O | | O |
+| leaseRatio6085 | Int[] | 60m2 초과 85m2 이하 매매가 대비 전세가 비율 리스트 | O | | O |
+| leaseRatio85 | Int[] | 85m2 초과 매매가 대비 전세가 비율 리스트 | O |
+
+| monthRenteRatio40 | Int[] | 40m2 이하 전세가 대비 월세 보증금 비율 리스트 | O |
+| monthRenteRatio4060 | Int[] | 40m2 초과 60m2 이하 전세가 대비 월세 보증금 비율 리스트 | O | | O |
+| monthRenteRatio6085 | Int[] | 60m2 초과 85m2 이하 전세가 대비 월세 보증금 비율 리스트 | O | | O |
+| monthRenteRatio85 | Int[] | 85m2 초과 전세가 대비 월세 보증금 비율 리스트 | O |
+
+###### Example
+
+**응답 성공**
+```bash
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "SU",
+  "message": "Success.",
+  "yearMonth": ['23-01','23-02','23-03', ... , '23-12'],
+  
+  "return40": [10.4, 11.1, 10.0, ..., 9.8],
+  "return4060": [10.4, 11.1, 10.0, ..., 9.8],
+  "return6085": [10.4, 11.1, 10.0, ..., 9.8],
+  "return85": [10.4, 11.1, 10.0, ..., 9.8],
+
+  "leaseRatio40": [10.4, 11.1, 10.0, ..., 9.8],
+  "leaseRatio4060": [10.4, 11.1, 10.0, ..., 9.8],
+  "leaseRatio6085": [10.4, 11.1, 10.0, ..., 9.8],
+  "leaseRatio85": [10.4, 11.1, 10.0, ..., 9.8],
+
+  "monthRenteRatio40": [10.4, 11.1, 10.0, ..., 9.8],
+  "monthRenteRatio4060": [10.4, 11.1, 10.0, ..., 9.8],
+  "monthRenteRatio6085": [10.4, 11.1, 10.0, ..., 9.8],
+  "monthRenteRatio85": [10.4, 11.1, 10.0, ..., 9.8],
+
 }
 ```
 
